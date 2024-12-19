@@ -18,7 +18,6 @@ function Account() {
     lastTasks: ['Задача 1', 'Задача 2', 'Задача 3', 'Задача 4']
   };
   
-
   const handleAvatarChange = (e) => {
     const file = e.target.files[0];
     if (file) {

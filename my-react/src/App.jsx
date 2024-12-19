@@ -1,33 +1,37 @@
-// import React from 'react';
+// import React, 
 import { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 // Импортируем компоненты
 import Register from "./Register";
 import Problems from './Problems'; 
 import AccountButton from "./AccountButton";
 import Account from './Account';
-
 import './styles.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const App = () => {
-    const [avatarSrc, setAvatarSrc] = useState('');
+  const [avatarSrc, setAvatarSrc] = useState('');
 
-    return (
-        <Router>
-            {/* AccountButton выносим за пределы Routes, чтобы он был всегда доступен */}
-            <AccountButton avatarSrc={avatarSrc} />
+  // Компонент для отображения кнопки личного кабинета
+  const AccountButtonWrapper = () => {
+    const location = useLocation();
 
-            {/* Маршруты */}
-            <Routes>
-                <Route path="/" element={<Register />} /> {/* Страница регистрации */}
-                <Route path="/problems" element={<Problems />} /> {/* Страница задач */}
-                <Route 
-                    path="/account" 
-                    element={<Account setAvatarSrc={setAvatarSrc} />} 
-                /> {/* Страница личного кабинета */}
-            </Routes>
-        </Router>
-    );
+    // Показываем кнопку только на странице `/problems`
+    if (location.pathname === '/problems') {
+      return <AccountButton avatarSrc={avatarSrc} />;
+    }
+    return null;
+  };
+
+  return (
+    <Router>
+      <AccountButtonWrapper /> {/* Кнопка отображается только для страницы задач */}
+      <Routes>
+        <Route path="/" element={<Register />} />
+        <Route path="/problems" element={<Problems />} />
+        <Route path="/account" element={<Account setAvatarSrc={setAvatarSrc} />} />
+      </Routes>
+    </Router>
+  );
 };
 
 export default App;
