@@ -1,78 +1,84 @@
 import React from 'react';
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import LoadingButton from "@mui/lab/LoadingButton";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import TerminalIcon from "@mui/icons-material/Terminal";
-import ButtonGroup from "@mui/material/ButtonGroup";
-import CircularProgress from '@mui/material/CircularProgress';
+import { createTheme, ThemeProvider } from "@mui/material/styles"; // Импортируем создание тем и провайдер тем
+import LoadingButton from "@mui/lab/LoadingButton"; // Кнопка с индикатором загрузки
+import PlayArrowIcon from "@mui/icons-material/PlayArrow"; // Иконка стрелки воспроизведения
+import TerminalIcon from "@mui/icons-material/Terminal"; // Иконка терминала
+import ButtonGroup from "@mui/material/ButtonGroup"; // Группа кнопок
+import CircularProgress from '@mui/material/CircularProgress'; // Индикатор загрузки
 
+// Создаём тему с кастомной палитрой
 const theme = createTheme({
   palette: {
     customColor: {
-      main: "#1b5e20",
+      main: "#1b5e20", // Кастомный зелёный цвет для кнопок
     },
     primary: {
         main: '#1976d2', // Цвет индикатора загрузки
-      },
+    },
   },
 });
 
 function BasicGroup() {
-  const [loading, setLoading] = React.useState(false);
-  const [loading2, setLoading2] = React.useState(false);
+  const [loading, setLoading] = React.useState(false); // Состояние загрузки для первой кнопки
+  const [loading2, setLoading2] = React.useState(false); // Состояние загрузки для второй кнопки
 
+  // Обработчик клика для первой кнопки
   const handleClick = () => {
-    setLoading(true);
+    setLoading(true); // Включаем индикатор загрузки
     setTimeout(() => {
-      setLoading(false);
+      setLoading(false); // Выключаем индикатор загрузки через 2 секунды
     }, 2000);
   };
 
+  // Обработчик клика для второй кнопки
   const handleClick2 = () => {
-    setLoading2(true);
+    setLoading2(true); // Включаем индикатор загрузки
     setTimeout(() => {
-      setLoading2(false);
+      setLoading2(false); // Выключаем индикатор загрузки через 2 секунды
     }, 2000);
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}> {/* Применяем тему через ThemeProvider */}
       <ButtonGroup
-        color="customColor"
-        variant="outlined"
-        aria-label="Small button group"
+        color="customColor" // Устанавливаем кастомный цвет
+        variant="outlined" // Контурный стиль кнопок
+        aria-label="Small button group" // Атрибут для доступности
       >
+        {/* Первая кнопка с индикатором загрузки */}
         <LoadingButton
-          onClick={handleClick}
-          loading={loading}
-          startIcon={<PlayArrowIcon />}
-          loadingIndicator={<CircularProgress color="customColor" size={16} />}
+          onClick={handleClick} // Обработчик клика
+          loading={loading} // Состояние загрузки
+          startIcon={<PlayArrowIcon />} // Иконка в начале кнопки
+          loadingIndicator={<CircularProgress color="customColor" size={16} />} // Индикатор загрузки
           sx={{
-            borderColor: theme.palette.customColor.main, // Установите цвет обводки
+            borderColor: theme.palette.customColor.main, // Цвет обводки кнопки
             '&.MuiLoadingButton-loading': {
-              borderColor: theme.palette.customColor.main, // Сохраните цвет обводки при загрузке
+              borderColor: theme.palette.customColor.main, // Цвет обводки при загрузке
             },
           }}
         >
-          Run
+          Run {/* Текст кнопки */}
         </LoadingButton>
+        
+        {/* Вторая кнопка с индикатором загрузки */}
         <LoadingButton
-          onClick={handleClick2}
-          loading={loading2}
-          startIcon={<TerminalIcon />}
-          loadingIndicator={<CircularProgress color="customColor" size={16} />}
+          onClick={handleClick2} // Обработчик клика
+          loading={loading2} // Состояние загрузки
+          startIcon={<TerminalIcon />} // Иконка в начале кнопки
+          loadingIndicator={<CircularProgress color="customColor" size={16} />} // Индикатор загрузки
           sx={{
-            borderColor: theme.palette.customColor.main, // Установите цвет обводки
+            borderColor: theme.palette.customColor.main, // Цвет обводки кнопки
             '&.MuiLoadingButton-loading': {
-              borderColor: theme.palette.customColor.main, // Сохраните цвет обводки при загрузке
+              borderColor: theme.palette.customColor.main, // Цвет обводки при загрузке
             },
           }}
         >
-          Submit
+          Submit {/* Текст кнопки */}
         </LoadingButton>
       </ButtonGroup>
     </ThemeProvider>
   );
 }
 
-export default BasicGroup; // Убедитесь, что это корректно
+export default BasicGroup; // Экспорт компонента

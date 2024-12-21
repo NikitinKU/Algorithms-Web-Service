@@ -1,68 +1,74 @@
+/* Основные настройки для всего документа */
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; /* Основной шрифт */
+  line-height: 1.5; /* Межстрочный интервал */
+  font-weight: 400; /* Базовый вес шрифта */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color-scheme: light dark; /* Поддержка светлой и тёмной темы */
+  color: rgba(255, 255, 255, 0.87); /* Основной цвет текста */
+  background-color: #242424; /* Фоновый цвет для тёмной темы */
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none; /* Отключение синтеза шрифтов */
+  text-rendering: optimizeLegibility; /* Оптимизация рендеринга текста для читаемости */
+  -webkit-font-smoothing: antialiased; /* Сглаживание текста для WebKit-браузеров */
+  -moz-osx-font-smoothing: grayscale; /* Сглаживание текста для macOS */
 }
 
+/* Стили для ссылок */
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  font-weight: 500; /* Усиленный шрифт */
+  color: #646cff; /* Основной цвет ссылок */
+  text-decoration: inherit; /* Наследование стиля подчёркивания */
 }
 a:hover {
-  color: #535bf2;
+  color: #535bf2; /* Цвет при наведении */
 }
 
+/* Стили для тела документа */
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  margin: 0; /* Убираем отступы */
+  display: flex; /* Включаем Flexbox */
+  place-items: center; /* Центрирование содержимого */
+  min-width: 320px; /* Минимальная ширина экрана */
+  min-height: 100vh; /* Высота экрана */
 }
 
+/* Заголовки первого уровня */
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: 3.2em; /* Размер шрифта */
+  line-height: 1.1; /* Межстрочный интервал */
 }
 
+/* Стили для кнопок */
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+  border-radius: 8px; /* Закруглённые края */
+  border: 1px solid transparent; /* Прозрачная рамка */
+  padding: 0.6em 1.2em; /* Внутренние отступы */
+  font-size: 1em; /* Размер текста */
+  font-weight: 500; /* Усиленный шрифт */
+  font-family: inherit; /* Наследование шрифта */
+  background-color: #1a1a1a; /* Цвет фона кнопки */
+  cursor: pointer; /* Указатель при наведении */
+  transition: border-color 0.25s; /* Плавный переход для цвета рамки */
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #646cff; /* Цвет рамки при наведении */
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 4px auto -webkit-focus-ring-color; /* Обводка при фокусе */
 }
 
+/* Медиа-запросы для светлой темы */
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: #213547; /* Цвет текста для светлой темы */
+    background-color: #ffffff; /* Фоновый цвет для светлой темы */
   }
   a:hover {
-    color: #747bff;
+    color: #747bff; /* Цвет ссылок при наведении */
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* Цвет фона кнопок */
   }
 }

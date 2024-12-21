@@ -1,37 +1,37 @@
-// import React, 
 import { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
-// Импортируем компоненты
-import Register from "./Register";
+import Register from "./Register"; 
 import Problems from './Problems'; 
-import AccountButton from "./AccountButton";
-import Account from './Account';
-import './styles.css';
+import ListTasks from './ListTasks'; 
+import AccountButton from "./AccountButton"; 
+import Account from './Account'; 
+import './styles.css'; 
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom'; 
 
 const App = () => {
-  const [avatarSrc, setAvatarSrc] = useState('');
+    const [avatarSrc, setAvatarSrc] = useState('');
 
-  // Компонент для отображения кнопки личного кабинета
-  const AccountButtonWrapper = () => {
-    const location = useLocation();
+    // Обёртка для кнопки личного кабинета
+    const AccountButtonWrapper = () => {
+        const location = useLocation(); 
 
-    // Показываем кнопку только на странице `/problems`
-    if (location.pathname === '/problems') {
-      return <AccountButton avatarSrc={avatarSrc} />;
-    }
-    return null;
-  };
+        // Отображаем кнопку только на определённых страницах
+        if (location.pathname === '/problems') {
+            return <AccountButton avatarSrc={avatarSrc} />; // Показываем только на странице задач
+        }
+        return null;
+    };
 
-  return (
-    <Router>
-      <AccountButtonWrapper /> {/* Кнопка отображается только для страницы задач */}
-      <Routes>
-        <Route path="/" element={<Register />} />
-        <Route path="/problems" element={<Problems />} />
-        <Route path="/account" element={<Account setAvatarSrc={setAvatarSrc} />} />
-      </Routes>
-    </Router>
-  );
+    return (
+        <Router>
+            <AccountButtonWrapper /> {/* Обёртка для условного отображения кнопки */}
+            <Routes>
+                <Route path="/" element={<Register />} /> 
+                <Route path="/problems" element={<Problems />} />
+                <Route path="/ListTasks" element={<ListTasks />} />
+                <Route path="/account" element={<Account setAvatarSrc={setAvatarSrc} />} />
+            </Routes>
+        </Router>
+    );
 };
 
-export default App;
+export default App; 
