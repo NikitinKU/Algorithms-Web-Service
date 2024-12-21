@@ -2,15 +2,45 @@
 import Splitter, { SplitDirection } from '@devbookhq/splitter'; // Компонент для разделения области на панели
 import './styles.css'; // Подключаем стили
 import BasicGroup from './Button.jsx'; // Кнопки с индикаторами загрузки
-import AccountMenu from './AccountButton.jsx'; // Кнопка для аккаунта пользователя
+// import AccountMenu from './AccountButton.jsx'; // Кнопка для аккаунта пользователя
+import { Box, Tab, Tabs } from '@mui/material';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Problems = () => {
-    return (       
-        <div style={{ width: '100dvw', height: '100dvh', display: 'flex', flexDirection: 'column' }}>
+    const [value, setValue] = useState('one');
+    
+      const handleChange = (event, newValue) => {
+        setValue(newValue);
+      };
+    const navigate = useNavigate(); // Хук для программной навигации
+
+    return (   
+        <Box sx={{ zIndex: -5, display: "flex", flexDirection: "column", backgroundColor: "#1a1a1a", height: "100dvh", width: "100dvw", 
+            justifyContent: "center", alignItems: "center", margin: 0}}>
+        
+        <Box sx={{  paddingLeft: "215px", marginBottom: 5, marginTop: -22, width: "calc(100% - 215px)", backgroundColor: "#202020"}}>
+        <Tabs 
+          value={value}
+          onChange={handleChange}
+          textColor="#ffffff"
+          indicatorColor="#ffffff"
+          aria-label="secondary tabs example"
+        >
+          <Tab value="one" label="Back to tasks" 
+              variant="contained"
+              onClick={() => navigate("/ListTasks")}
+              sx={{ marginBottom: 0, backgroundColor: "#1a1a1a", color: "#ffffff" }}
+              Back to Tasks
+          />
+        </Tabs>
+        </Box>
+        
+        <div style={{ width: '100dvw', height: '89%', marginBottom: -155, display: 'flex', flexDirection: 'column' }}>
             {/* Верхняя панель с кнопками */}
-            <div style={{ height: '5dvh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <div style={{ marginTop: -35, height: '5dvh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <BasicGroup /> {/* Компонент с кнопками */}
-                <AccountMenu /> {/* Компонент кнопки аккаунта */}
+                {/* <AccountMenu /> */}
             </div>
             {/* Разделение контента на горизонтальные и вертикальные панели */}
             <Splitter direction={SplitDirection.Horizontal}>
@@ -29,6 +59,7 @@ const Problems = () => {
                 </div>
             </Splitter>
         </div>
+        </Box>
     );
 };
 

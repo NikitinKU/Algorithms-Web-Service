@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./styles.css";
+import { Box, Tab, Tabs } from '@mui/material';
 
 // Данные задач
 const tasksData = [
@@ -12,6 +13,11 @@ const tasksData = [
 ];
 
 const ListTasks = () => {
+    const [value, setValue] = useState('one');
+    
+      const handleChange = (event, newValue) => {
+        setValue(newValue);
+      };
     const [sortOrder, setSortOrder] = useState('all'); // Хранит текущую выбранную категорию
     const navigate = useNavigate(); // Хук для программной навигации
 
@@ -36,7 +42,28 @@ const ListTasks = () => {
     const filteredTasks = filterTasks(); // Получаем список отфильтрованных задач
 
     return (
-        <div className="container_2">
+        <Box sx={{ zIndex: -5, display: "flex", flexDirection: "column", backgroundColor: "#1a1a1a", height: "100dvh", width: "100dvw", 
+                    justifyContent: "center", alignItems: "center", margin: 0}}>
+
+                    
+        <Box sx={{  paddingLeft: "215px", marginBottom: 5, marginTop: -20, width: "calc(100% - 215px)", backgroundColor: "#202020"}}>
+        <Tabs 
+          value={value}
+          onChange={handleChange}
+          textColor="#ffffff"
+          indicatorColor="#ffffff"
+          aria-label="secondary tabs example"
+        >
+          <Tab value="one" label="Back to tasks" 
+              variant="contained"
+              onClick={() => navigate("/ListTasks")}
+              sx={{ marginBottom: 0, backgroundColor: "#1a1a1a", color: "#ffffff" }}
+              Back to Tasks
+          />
+        </Tabs>
+        </Box>
+
+        <Box className="container_2">
             <h1 className="header">Список задач</h1>
             {/* Группа радиокнопок для фильтрации */}
             <div className="radio-group">
@@ -93,7 +120,8 @@ const ListTasks = () => {
                     <li className="list-item">Нет задач для выбранного уровня сложности.</li> // Пустое состояние
                 )}
             </ul>
-        </div>
+        </Box>
+        </Box>
     );
 };
 

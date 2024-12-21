@@ -15,7 +15,7 @@ const App = () => {
         const location = useLocation(); 
 
         // Отображаем кнопку только на определённых страницах
-        if (location.pathname === '/problems') {
+        if (location.pathname === '/problems' || location.pathname === '/ListTasks') {
             return <AccountButton avatarSrc={avatarSrc} />; // Показываем только на странице задач
         }
         return null;
