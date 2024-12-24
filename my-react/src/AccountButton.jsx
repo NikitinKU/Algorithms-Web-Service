@@ -7,7 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import Logout from '@mui/icons-material/Logout';
-import { useNavigate } from 'react-router-dom'; // Импортируем useNavigate для перехода
+import { useNavigate } from 'react-router-dom';
 
 function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null); // Состояние для открытия меню
